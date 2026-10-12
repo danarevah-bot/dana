@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "preferences": {
+    "destination": {
+      "value": "reels",
+      "confirmed_in": [
+        "yumi-promo"
+      ],
+      "updated_at": "2026-10-12T13:58:25.222Z"
+    },
+    "aspect": {
+      "value": "1080x1920",
+      "confirmed_in": [
+        "yumi-promo"
+      ],
+      "updated_at": "2026-10-12T13:58:25.278Z"
+    },
+    "language": {
+      "value": "he",
+      "confirmed_in": [
+        "yumi-promo"
+      ],
+      "updated_at": "2026-10-12T13:58:25.351Z"
+    },
+    "flow": {
+      "value": "automation",
+      "confirmed_in": [
+        "yumi-promo"
+      ],
+      "updated_at": "2026-10-12T13:58:25.407Z"
+    },
+    "storyboard": {
+      "value": "no",
+      "confirmed_in": [
+        "yumi-promo"
+      ],
+      "updated_at": "2026-10-12T13:58:25.460Z"
+    },
+    "style_preset.product-launch-video": {
+      "value": "cartesian",
+      "confirmed_in": [
+        "yumi-promo"
+      ],
+      "updated_at": "2026-10-12T13:58:40.562Z"
+    }
+  },
+  "sightings": {}
+}
