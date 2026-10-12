@@ -119,7 +119,7 @@ Scene 1 (0–1.3s): product + heading. → Scene 2 (1.3–3.3s): four icon tiles
 
 ## Frame 7 — CTA
 
-- scene: Three boxes + stick; logo mark; "הריטואל הקטן שלך." + CTA pill "להזמנה – הקישור בביו"
+- scene: Three boxes + stick; logo mark; "Eat your skincare." + CTA pill "להזמנה – הקישור בביו"
 - duration: 5s
 - poster: 4.5s
 - transition_in: blur-crossfade 0.9
