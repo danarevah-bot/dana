@@ -1,8 +1,8 @@
 ---
 format: 1080x1920
-duration: 30s
+duration: 34s
 message: "YUMI — קולגן בסטיק ג׳לי בטעם תות ודובדבן: רגע קטן בשבילך, בלי ערבוב ובלי הכנה"
-arc: hook → product intro → ritual (benefit) → taste → what's inside → CTA
+arc: hook → product intro → ritual → taste → ingredients → qualities → CTA
 audience: נשים שאוהבות ביוטי ומחפשות דרך נוחה ונעימה לשלב תוסף בשגרה
 mode: autonomous
 music: none
@@ -37,10 +37,10 @@ Scene 1 (0.0–1.2s): full canvas, the torn stick + jelly cube huge (scale ~2.4)
 
 ## Frame 2 — Meet YUMI
 
-- scene: Hero shot of the closed + open box; "הכירו את YUMI" / "קולגן בחוויה אחרת"
-- duration: 5.5s
+- scene: Hero shot; logo mark, "הכירו את YUMI" / "קולגן בחוויה אחרת"
+- duration: 5s
 - poster: 4s
-- transition_in: blur-crossfade
+- transition_in: blur-crossfade 0.9
 - status: animated
 - blueprint: compose
 - asset_candidates: box-pair-open.png
@@ -55,9 +55,9 @@ Scene 1 (0–1.5s): label "הכירו את" fades in at top; product hero scales
 ## Frame 3 — The ritual
 
 - scene: "פותחים. לועסים. ממשיכים ביום." word-swap, then "בלי ערבוב · בלי הכנה"
-- duration: 6s
+- duration: 5.5s
 - poster: 5s
-- transition_in: push-slide
+- transition_in: blur-crossfade 0.9
 - status: animated
 - blueprint: kinetic-type-beats
 - asset_candidates: box-and-stick.png
@@ -73,9 +73,9 @@ Scene 1 (0–1.4s): box-and-stick drifts in at top; "פותחים." large.
 ## Frame 4 — Taste
 
 - scene: Full-bleed jelly red; "טעם של" / "תות ודובדבן" in off-white, jelly macro in a circle
-- duration: 4.5s
+- duration: 4s
 - poster: 3.5s
-- transition_in: zoom-through
+- transition_in: blur-crossfade 0.9
 - status: animated
 - blueprint: compose
 - asset_candidates: box-pair-open.png
@@ -87,36 +87,47 @@ Scene 1 (0–1.2s): red field; circle crop of the jelly scales in with rings.
 → Scene 2 (1.2–2.6s): "טעם של" small label, then "תות" rises.
 → Scene 3 (2.6–4.5s): "ודובדבן" rises; rings rotate slowly.
 
-## Frame 5 — What's inside
+## Frame 5 — Ingredients
 
-- scene: Two boxes + stick; ingredient chips and 15 / 15g / 7 stats count up
+- scene: "ממה YUMI עשוי?" — ingredient chips: קולגן, חומצה היאלורונית, ויטמין C, ביוטין, אבץ, סרמידים, אינולין, תמצית במבוק, אצרולה, דובדבן ותות
 - duration: 5.5s
-- poster: 4.8s
-- transition_in: blur-crossfade
+- poster: 5s
+- transition_in: blur-crossfade 0.9
 - status: animated
-- blueprint: dataviz-countup
+- blueprint: compose
 - asset_candidates: two-boxes-stick.png
 - focal: two-boxes-stick.png
-- roles: two-boxes-stick.png — cutout, upper half
-- src: compositions/frames/05-inside.html
+- roles: two-boxes-stick.png — cutout, upper area
+- src: compositions/frames/05-ingredients.html
 
-Scene 1 (0–1.2s): product rises in, label "בכל סטיק".
-→ Scene 2 (1.2–3.0s): chips stagger in: קולגן מדגים · ויטמין C · ביוטין · אבץ.
-→ Scene 3 (3.0–5.5s): stats cluster on hairline: "15" סטיקים בקופסה · "15" גרם לסטיק · "7" קלוריות — numbers count up.
+Scene 1 (0–1.3s): product rises, label + heading. → Scene 2 (1.3–5.5s): ten chips stagger in, 0.22s apart.
 
-## Frame 6 — CTA
+## Frame 6 — Qualities
 
-- scene: Three boxes + stick; "הריטואל הקטן שלך." + CTA pill "להזמנה — הלינק בביו"
-- duration: 4.5s
-- poster: 4s
-- transition_in: crossfade
+- scene: "האיכויות שלנו" — ללא גלוטן · ללא GMO · 7 קלוריות לסטיק · מוכן לצריכה
+- duration: 5s
+- poster: 4.5s
+- transition_in: blur-crossfade 0.9
+- status: animated
+- blueprint: compose
+- asset_candidates: open-box-sticks.png
+- focal: open-box-sticks.png
+- roles: open-box-sticks.png — small cutout, top
+- src: compositions/frames/06-qualities.html
+
+Scene 1 (0–1.3s): product + heading. → Scene 2 (1.3–3.3s): four icon tiles pop in. → Scene 3: footer "15 סטיקים בקופסה · סטיק אחד ביום".
+
+## Frame 7 — CTA
+
+- scene: Three boxes + stick; logo mark; "הריטואל הקטן שלך." + CTA pill "להזמנה – הקישור בביו"
+- duration: 5s
+- poster: 4.5s
+- transition_in: blur-crossfade 0.9
 - status: animated
 - blueprint: compose
 - asset_candidates: three-boxes-stick.png
 - focal: three-boxes-stick.png
-- roles: three-boxes-stick.png — cutout hero
-- src: compositions/frames/06-cta.html
+- roles: three-boxes-stick.png — cutout hero; logo-mark.png — brand mark
+- src: compositions/frames/07-cta.html
 
-Scene 1 (0–1.2s): product lineup rises in.
-→ Scene 2 (1.2–2.6s): "הריטואל הקטן שלך." + "YUMI · קולגן בחוויה אחרת".
-→ Scene 3 (2.6–4.5s): CTA pill pops in with a soft pulse; micro disclaimer "תוסף תזונה · לצריכה לפי הוראות השימוש". Final frame — gentle settle.
+Scene 1 (0–1.2s): lineup rises, logo mark pops. → Scene 2 (1.2–2.6s): headline + name line. → Scene 3 (2.6–5s): CTA pill + disclaimer; final frame settles.

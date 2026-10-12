@@ -1,5 +1,5 @@
 <template id="04-taste-template">
-  <div id="root" data-composition-id="04-taste" data-start="0" data-duration="4.5" data-width="1080" data-height="1920">
+  <div id="root" data-composition-id="04-taste" data-start="0" data-duration="4.9" data-width="1080" data-height="1920">
     <style>
 @font-face{font-family:'Assistant';font-style:normal;font-weight:300;font-display:block;src:url('assets/fonts/assistant-hebrew-300-normal.woff2') format('woff2');unicode-range:U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;}
 @font-face{font-family:'Assistant';font-style:normal;font-weight:300;font-display:block;src:url('assets/fonts/assistant-latin-300-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
@@ -14,7 +14,8 @@
 .y04-taste-bg{position:absolute;inset:0;}
 .y04-taste-abs{position:absolute;}
 .y04-taste-rtl{direction:rtl;text-align:center;}
-.y04-taste-label{font-size:30px;font-weight:600;letter-spacing:8px;color:#9e4e42;}
+.y04-taste-label{font-size:40px;font-weight:600;letter-spacing:0;color:#9e4e42;}
+.y04-taste-logo{position:absolute;display:block;}
 .y04-taste-photo{position:absolute;display:block;}
 .y04-taste-blend{mix-blend-mode:multiply;}
 #y04-taste-disc .y04-taste-photo{mix-blend-mode:multiply;}
@@ -25,19 +26,19 @@
 #y04-taste-r2{left:80px;top:160px;width:920px;height:920px;border:2px dashed #ecebe5;border-radius:50%;opacity:0.3;}
 #y04-taste-disc{left:230px;top:310px;width:620px;height:620px;border-radius:50%;overflow:hidden;background:#ecebe5;}
 #y04-taste-discimg{left:-560px;top:-45px;width:1080px;height:1350px;transform-origin:870px 355px;}
-#y04-taste-label{left:0;top:1110px;width:1080px;color:#ecebe5;font-size:40px;letter-spacing:10px;}
+#y04-taste-label{left:0;top:1100px;width:1080px;color:#ecebe5;font-size:48px;}
 .y04-taste-big{left:0;width:1080px;font-size:220px;font-weight:300;line-height:1;color:#ecebe5;}
 #y04-taste-t1{top:1180px;}
 #y04-taste-t2{top:1390px;font-weight:600;}
 
     </style>
-    <div class="clip y04-taste-bg" id="y04-taste-bg" data-start="0" data-duration="4.5" data-track-index="0"></div>
+    <div class="clip y04-taste-bg" id="y04-taste-bg" data-start="0" data-duration="4.9" data-track-index="0"></div>
 
     <div class="y04-taste-abs" id="y04-taste-glow"></div>
     <div class="y04-taste-abs" id="y04-taste-r2"></div>
     <div class="y04-taste-abs" id="y04-taste-r1"></div>
     <div class="y04-taste-abs" id="y04-taste-disc"><img class="y04-taste-photo" id="y04-taste-discimg" src="assets/box-pair-open.png" alt=""></div>
-    <div class="y04-taste-abs y04-taste-rtl y04-taste-label" id="y04-taste-label">טעם של</div>
+    <div class="y04-taste-abs y04-taste-rtl y04-taste-label" id="y04-taste-label">בטעם</div>
     <div class="y04-taste-abs y04-taste-rtl y04-taste-big" id="y04-taste-t1">תות</div>
     <div class="y04-taste-abs y04-taste-rtl y04-taste-big" id="y04-taste-t2">ודובדבן</div>
 
@@ -47,14 +48,14 @@
         const q = (s) => document.querySelector('[data-composition-id="04-taste"] ' + s);
         const tl = gsap.timeline({ paused: true });
 
-        tl.fromTo(q('#y04-taste-disc'), {opacity:0, scale:0.6}, {opacity:1, scale:1, duration:1.0, ease:'expo.out'}, 0);
-        tl.fromTo(q('#y04-taste-discimg'), {scale:1.5}, {scale:1.85, duration:4.5, ease:'power1.out'}, 0);
-        tl.fromTo(q('#y04-taste-r1'), {opacity:0, scale:0.7}, {opacity:0.45, scale:1, duration:1.1, ease:'expo.out'}, 0.15);
-        tl.fromTo(q('#y04-taste-r2'), {opacity:0, scale:0.75, rotation:0}, {opacity:0.3, scale:1, rotation:60, duration:4.3, ease:'power2.out'}, 0.2);
+        tl.fromTo(q('#y04-taste-disc'), {opacity:0, scale:0.6}, {opacity:1, scale:1, duration:1.1, ease:'expo.out'}, 0);
+        tl.fromTo(q('#y04-taste-discimg'), {scale:1.5}, {scale:1.85, duration:4, ease:'power1.out'}, 0);
+        tl.fromTo(q('#y04-taste-r1'), {opacity:0, scale:0.7}, {opacity:0.45, scale:1, duration:1.2, ease:'expo.out'}, 0.15);
+        tl.fromTo(q('#y04-taste-r2'), {opacity:0, scale:0.75, rotation:0}, {opacity:0.3, scale:1, rotation:60, duration:3.8, ease:'power2.out'}, 0.2);
         tl.fromTo(q('#y04-taste-glow'), {opacity:0}, {opacity:1, duration:1.2, ease:'power2.out'}, 0);
-        tl.fromTo(q('#y04-taste-label'), {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:'power3.out'}, 1.1);
-        tl.fromTo(q('#y04-taste-t1'), {opacity:0, y:80, filter:'blur(14px)'}, {opacity:1, y:0, filter:'blur(0px)', duration:0.8, ease:'expo.out'}, 1.4);
-        tl.fromTo(q('#y04-taste-t2'), {opacity:0, y:80, filter:'blur(14px)'}, {opacity:1, y:0, filter:'blur(0px)', duration:0.9, ease:'expo.out'}, 2.6);
+        tl.fromTo(q('#y04-taste-label'), {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:'power3.out'}, 0.9);
+        tl.fromTo(q('#y04-taste-t1'), {opacity:0, y:80, filter:'blur(14px)'}, {opacity:1, y:0, filter:'blur(0px)', duration:0.9, ease:'expo.out'}, 1.2);
+        tl.fromTo(q('#y04-taste-t2'), {opacity:0, y:80, filter:'blur(14px)'}, {opacity:1, y:0, filter:'blur(0px)', duration:0.9, ease:'expo.out'}, 2.1);
 
         window.__timelines["04-taste"] = tl;
       })();

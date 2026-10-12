@@ -1,0 +1,69 @@
+<template id="05-ingredients-template">
+  <div id="root" data-composition-id="05-ingredients" data-start="0" data-duration="6.4" data-width="1080" data-height="1920">
+    <style>
+@font-face{font-family:'Assistant';font-style:normal;font-weight:300;font-display:block;src:url('assets/fonts/assistant-hebrew-300-normal.woff2') format('woff2');unicode-range:U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:300;font-display:block;src:url('assets/fonts/assistant-latin-300-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:400;font-display:block;src:url('assets/fonts/assistant-hebrew-400-normal.woff2') format('woff2');unicode-range:U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:400;font-display:block;src:url('assets/fonts/assistant-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:600;font-display:block;src:url('assets/fonts/assistant-hebrew-600-normal.woff2') format('woff2');unicode-range:U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:600;font-display:block;src:url('assets/fonts/assistant-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/assistant-hebrew-700-normal.woff2') format('woff2');unicode-range:U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;}
+@font-face{font-family:'Assistant';font-style:normal;font-weight:700;font-display:block;src:url('assets/fonts/assistant-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+
+#root{position:relative;width:100%;height:100%;overflow:hidden;font-family:'Assistant',sans-serif;color:#2a1416;}
+.y05-ingredients-bg{position:absolute;inset:0;}
+.y05-ingredients-abs{position:absolute;}
+.y05-ingredients-rtl{direction:rtl;text-align:center;}
+.y05-ingredients-label{font-size:40px;font-weight:600;letter-spacing:0;color:#9e4e42;}
+.y05-ingredients-logo{position:absolute;display:block;}
+.y05-ingredients-photo{position:absolute;display:block;}
+.y05-ingredients-blend{mix-blend-mode:multiply;}
+#y05-ingredients-disc .y05-ingredients-photo{mix-blend-mode:multiply;}
+
+#y05-ingredients-bg{background:#ecebe5;}
+#y05-ingredients-prod{left:190px;top:40px;width:700px;height:875px;}
+#y05-ingredients-prodimg{left:0;top:0;width:700px;height:875px;}
+#y05-ingredients-label{left:0;top:690px;width:1080px;}
+#y05-ingredients-head{left:0;top:750px;width:1080px;font-size:104px;font-weight:300;line-height:1.1;}
+#y05-ingredients-chips{left:70px;top:930px;width:940px;display:flex;flex-wrap:wrap;justify-content:center;gap:24px 20px;direction:rtl;}
+.y05-ingredients-chip{display:block;padding:14px 36px;border:2px solid #a3142c;border-radius:999px;font-size:46px;font-weight:600;color:#a3142c;background:rgba(255,255,255,0.4);}
+#y05-ingredients-c0{background:#a3142c;color:#ecebe5;}
+
+    </style>
+    <div class="clip y05-ingredients-bg" id="y05-ingredients-bg" data-start="0" data-duration="6.4" data-track-index="0"></div>
+
+    <div class="y05-ingredients-abs y05-ingredients-blend" id="y05-ingredients-prod"><img class="y05-ingredients-photo" id="y05-ingredients-prodimg" src="assets/two-boxes-stick.png" alt=""></div>
+    <div class="y05-ingredients-abs y05-ingredients-rtl y05-ingredients-label" id="y05-ingredients-label">הרכיבים</div>
+    <div class="y05-ingredients-abs y05-ingredients-rtl" id="y05-ingredients-head">ממה YUMI עשוי?</div>
+    <div class="y05-ingredients-abs" id="y05-ingredients-chips">
+      <span class="y05-ingredients-chip" id="y05-ingredients-c0">קולגן</span>
+      <span class="y05-ingredients-chip" id="y05-ingredients-c1">חומצה היאלורונית</span>
+      <span class="y05-ingredients-chip" id="y05-ingredients-c2">ויטמין C</span>
+      <span class="y05-ingredients-chip" id="y05-ingredients-c3">ביוטין</span>
+      <span class="y05-ingredients-chip" id="y05-ingredients-c4">אבץ</span>
+      <span class="y05-ingredients-chip" id="y05-ingredients-c5">סרמידים</span>
+      <span class="y05-ingredients-chip" id="y05-ingredients-c6">אינולין</span>
+      <span class="y05-ingredients-chip" id="y05-ingredients-c7">תמצית במבוק</span>
+      <span class="y05-ingredients-chip" id="y05-ingredients-c8">אצרולה</span>
+      <span class="y05-ingredients-chip" id="y05-ingredients-c9">דובדבן ותות</span>
+    </div>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script>
+      (function(){
+        const q = (s) => document.querySelector('[data-composition-id="05-ingredients"] ' + s);
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(q('#y05-ingredients-prod'), {opacity:0, y:50, scale:0.94}, {opacity:1, y:0, scale:1, duration:1.1, ease:'power3.out'}, 0);
+        tl.fromTo(q('#y05-ingredients-prod'), {scale:1}, {scale:1.04, duration:4.4, ease:'none', immediateRender:false}, 1.1);
+        tl.fromTo(q('#y05-ingredients-label'), {opacity:0, y:-15}, {opacity:1, y:0, duration:0.6, ease:'power3.out'}, 0.3);
+        tl.fromTo(q('#y05-ingredients-head'), {opacity:0, y:40, filter:'blur(10px)'}, {opacity:1, y:0, filter:'blur(0px)', duration:0.9, ease:'expo.out'}, 0.5);
+        for (let i = 0; i < 10; i++) {
+          tl.fromTo(q('#y05-ingredients-c' + i), {opacity:0, y:30, scale:0.9}, {opacity:1, y:0, scale:1, duration:0.55, ease:'back.out(1.5)'}, 1.3 + i*0.22);
+        }
+
+        window.__timelines["05-ingredients"] = tl;
+      })();
+    </script>
+  </div>
+</template>

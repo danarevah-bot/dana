@@ -37,7 +37,7 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="30"
+      data-duration="34"
       data-width="1080"
       data-height="1920"
     >
@@ -47,7 +47,7 @@
         data-composition-id="01-hook"
         data-composition-src="compositions/frames/01-hook.html"
         data-start="0"
-        data-duration="4.6"
+        data-duration="4.9"
         data-track-index="0"
       ></div>
 
@@ -57,7 +57,7 @@
         data-composition-id="02-intro"
         data-composition-src="compositions/frames/02-intro.html"
         data-start="4"
-        data-duration="6"
+        data-duration="5.9"
         data-track-index="1"
       ></div>
 
@@ -66,7 +66,7 @@
         class="scene"
         data-composition-id="03-ritual"
         data-composition-src="compositions/frames/03-ritual.html"
-        data-start="9.5"
+        data-start="9"
         data-duration="6.4"
         data-track-index="0"
       ></div>
@@ -76,29 +76,39 @@
         class="scene"
         data-composition-id="04-taste"
         data-composition-src="compositions/frames/04-taste.html"
-        data-start="15.5"
-        data-duration="5.1"
+        data-start="14.5"
+        data-duration="4.9"
         data-track-index="1"
       ></div>
 
       <div
-        id="el-05-inside"
+        id="el-05-ingredients"
         class="scene"
-        data-composition-id="05-inside"
-        data-composition-src="compositions/frames/05-inside.html"
-        data-start="20"
-        data-duration="6"
+        data-composition-id="05-ingredients"
+        data-composition-src="compositions/frames/05-ingredients.html"
+        data-start="18.5"
+        data-duration="6.4"
         data-track-index="0"
       ></div>
 
       <div
-        id="el-06-cta"
+        id="el-06-qualities"
         class="scene"
-        data-composition-id="06-cta"
-        data-composition-src="compositions/frames/06-cta.html"
-        data-start="25.5"
-        data-duration="4.5"
+        data-composition-id="06-qualities"
+        data-composition-src="compositions/frames/06-qualities.html"
+        data-start="24"
+        data-duration="5.9"
         data-track-index="1"
+      ></div>
+
+      <div
+        id="el-07-cta"
+        class="scene"
+        data-composition-id="07-cta"
+        data-composition-src="compositions/frames/07-cta.html"
+        data-start="29"
+        data-duration="5"
+        data-track-index="0"
       ></div>
 
     </div>
@@ -108,17 +118,19 @@
       window.__timelines["main"] = gsap.timeline({ paused: true });
       // ── frame transitions (injected by transitions.mjs) ──
       (function () { var tl = window.__timelines["main"];
-        tl.to("#el-01-hook", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.6, ease: "power2.inOut" }, 4);
-        tl.fromTo("#el-02-intro", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.6, ease: "power2.inOut" }, 4);
-        tl.to("#el-02-intro", { x: -1080, duration: 0.5, ease: "power3.inOut" }, 9.5);
-        tl.fromTo("#el-03-ritual", { x: 1080, opacity: 1 }, { x: 0, opacity: 1, duration: 0.5, ease: "power3.inOut" }, 9.5);
-        tl.to("#el-03-ritual", { scale: 2.5, opacity: 0, filter: "blur(8px)", duration: 0.4, ease: "power3.in" }, 15.5);
-        tl.fromTo("#el-04-taste", { scale: 0.5, opacity: 0, filter: "blur(8px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power3.out" }, 15.5);
-        tl.to("#el-04-taste", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.6, ease: "power2.inOut" }, 20);
-        tl.fromTo("#el-05-inside", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.6, ease: "power2.inOut" }, 20);
-        tl.to("#el-05-inside", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 25.5);
-        tl.fromTo("#el-06-cta", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.inOut" }, 25.5);
-        tl.to({}, { duration: 30 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
+        tl.to("#el-01-hook", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.9, ease: "power2.inOut" }, 4);
+        tl.fromTo("#el-02-intro", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 4);
+        tl.to("#el-02-intro", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.9, ease: "power2.inOut" }, 9);
+        tl.fromTo("#el-03-ritual", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 9);
+        tl.to("#el-03-ritual", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.9, ease: "power2.inOut" }, 14.5);
+        tl.fromTo("#el-04-taste", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 14.5);
+        tl.to("#el-04-taste", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.9, ease: "power2.inOut" }, 18.5);
+        tl.fromTo("#el-05-ingredients", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 18.5);
+        tl.to("#el-05-ingredients", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.9, ease: "power2.inOut" }, 24);
+        tl.fromTo("#el-06-qualities", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 24);
+        tl.to("#el-06-qualities", { filter: "blur(10px)", scale: 1.03, opacity: 0, duration: 0.9, ease: "power2.inOut" }, 29);
+        tl.fromTo("#el-07-cta", { filter: "blur(10px)", scale: 0.97, opacity: 0 }, { filter: "blur(0px)", scale: 1, opacity: 1, duration: 0.9, ease: "power2.inOut" }, 29);
+        tl.to({}, { duration: 34 }, 0); // full-span anchor — main.duration() == composition total (Studio master duration)
       })();
     </script>
   </body>
