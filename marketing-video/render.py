@@ -10,7 +10,24 @@ SCR, IMG, V1, V2, OUT = sys.argv[1:6]
 W, H, FPS = 1080, 1920, 30
 XF = 0.5  # crossfade seconds
 FONT = {w: f"{SCR}/fonts/Rubik-{w}.ttf" for w in (500, 800, 900)}
-CARD_CY = 820
+CARD_CY = 960
+CARD_MAX_W, CARD_MAX_H = 1020, 1500
+
+
+def card_size(iw, ih):
+    cw = CARD_MAX_W; ch = int(cw * ih / iw)
+    if ch > CARD_MAX_H:
+        ch = CARD_MAX_H; cw = int(ch * iw / ih)
+    return cw, ch
+
+
+def enhance(im):
+    """Gentle clean-up for phone photos: levels, colour, contrast, crisp detail."""
+    from PIL import ImageEnhance
+    im = ImageOps.autocontrast(im, cutoff=0.4, preserve_tone=True)
+    im = ImageEnhance.Color(im).enhance(1.15)
+    im = ImageEnhance.Contrast(im).enhance(1.05)
+    return im.filter(ImageFilter.UnsharpMask(radius=1.6, percent=70, threshold=3))
 
 
 def font(w, size):
@@ -174,15 +191,21 @@ def load_img(name):
     return ImageOps.exif_transpose(im).convert("RGB")
 
 
-def decode(path, key):
+def decode(path, key, scale=1.12):
     info = json.loads(subprocess.check_output(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
                                                "stream=width,height,r_frame_rate", "-of", "json", path]))["streams"][0]
     num, den = map(int, info["r_frame_rate"].split("/"))
     probe = f"{SCR}/out/{key}_probe.png"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", path, "-frames:v", "1", probe], check=True)
     w, h = Image.open(probe).size  # dimensions after auto-rotation
+    cw, ch = card_size(w, h)
+    w, h = int(cw * scale) // 2 * 2, int(ch * scale) // 2 * 2
+    # denoise, high-quality upscale to the on-screen size, then sharpen and lift colour
+    vf = (f"hqdn3d=2:1.5:6:4,scale={w}:{h}:flags=lanczos,"
+          "unsharp=5:5:0.9:3:3:0,eq=saturation=1.15:contrast=1.05")
     raw = f"{SCR}/out/{key}.rgb"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", path, "-f", "rawvideo", "-pix_fmt", "rgb24", raw], check=True)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", path, "-vf", vf, "-f", "rawvideo", "-pix_fmt", "rgb24", raw],
+                   check=True)
     n = os.path.getsize(raw) // (w * h * 3)
     return np.memmap(raw, np.uint8, "r", shape=(n, h, w, 3)), num / den
 
@@ -219,13 +242,9 @@ class Photo:
     def __init__(self, im, dur, captions, zoom=(1.0, 1.12), pan=(0.0, 0.0, 0.0, 0.0)):
         self.dur, self.captions, self.zoom, self.pan = dur, captions, zoom, pan
         self.bg = blurred_bg(im)
-        iw, ih = im.size
-        if iw >= ih:
-            self.cw = 980; self.ch = int(980 * ih / iw)
-        else:
-            self.ch = 1180; self.cw = int(1180 * iw / ih)
-        self.src = im.resize((int(self.cw * 1.25), int(self.ch * 1.25)), Image.LANCZOS)
-        self.cy = CARD_CY if iw >= ih else 800
+        self.cw, self.ch = card_size(*im.size)
+        self.src = enhance(im.resize((int(self.cw * 1.15), int(self.ch * 1.15)), Image.LANCZOS))
+        self.cy = CARD_CY
 
     def frame(self, t):
         k = ease_io(t / self.dur)
@@ -233,7 +252,7 @@ class Photo:
         z = self.zoom[0] + (self.zoom[1] - self.zoom[0]) * k
         px = self.pan[0] + (self.pan[1] - self.pan[0]) * k
         py = self.pan[2] + (self.pan[3] - self.pan[2]) * k
-        paste_card(f, self.src, self.cw, self.ch, z, px, py, cy=self.cy, lift=int(10 * math.sin(t * 1.4)))
+        paste_card(f, self.src, self.cw, self.ch, z, px, py, cy=self.cy)
         for c in self.captions:
             c.draw(f, t)
         return f
@@ -243,10 +262,8 @@ class Clip:
     def __init__(self, frames, fps, dur, captions, zoom=(1.0, 1.06)):
         self.frames, self.fps, self.dur, self.captions, self.zoom = frames, fps, dur, captions, zoom
         n, h, w, _ = frames.shape
-        if w >= h:
-            self.cw = 980; self.ch = int(980 * h / w); self.cy = CARD_CY
-        else:
-            self.ch = 1180; self.cw = int(1180 * w / h); self.cy = 800
+        self.cw, self.ch = card_size(w, h)
+        self.cy = CARD_CY
 
     def frame(self, t):
         i = min(len(self.frames) - 1, int(t * self.fps))
@@ -328,17 +345,16 @@ def main():
 
     segs = [
         Intro(3.6, p1),
-        Photo(p4, 4.2, [Caption("מסע אל הכוכבים", "מטוס נייר, קשת בענן ושמיים זרועי כוכבים", "#FFB347", 0.35, 3.85)],
+        Photo(p4, 3.8, [],
               zoom=(1.02, 1.14), pan=(-0.4, 0.4, 0, 0)),
-        Photo(p1, 4.2, [Caption("צוללים לעולם תת־ימי", "צבי ים, דגים ושוניות על כל דלת", "#4FC3F7", 0.35, 3.85)],
+        Photo(p1, 3.8, [],
               zoom=(1.14, 1.02), pan=(0.3, -0.3, 0, 0)),
-        Photo(p3, 4.2, [Caption("העיצוב ממשיך גם לדלת", "חוויה שלמה מהכניסה ועד התאים", "#26C6DA", 0.35, 3.85, y=1450)],
+        Photo(p3, 3.8, [],
               zoom=(1.0, 1.10), pan=(0, 0, 0.5, -0.3)),
-        Photo(p2, 4.4, [Caption("השראה בכל דלת", "מסרים מעצימים שהתלמידים פוגשים כל יום", "#FF6B6B", 0.35, 4.05)],
+        Photo(p2, 3.8, [],
               zoom=(1.02, 1.12), pan=(0.4, -0.4, 0, 0)),
-        Clip(f1, fps1, d1, [Caption("סיור בין התאים", "מסרים חינוכיים בגובה העיניים", "#7ED957", 0.35, 5.8),
-                            Caption("לומדים היגיינה בכיף", "חשיבה פדגוגית מאחורי כל מסר", "#FFD23F", 6.0, d1 - 0.35)]),
-        Clip(f2, fps2, d2, [Caption("דמויות מעוררות השראה", "מסי, ג׳ורדן, איינשטיין ועוד", "#C792EA", 0.3, d2 - 0.3)]),
+        Clip(f1, fps1, d1, []),
+        Clip(f2, fps2, d2, []),
         Outro(6.5, [p1, p4, p2, p3]),
     ]
     starts, t = [], 0.0
@@ -375,7 +391,7 @@ def main():
     wav = f"{SCR}/out/music.wav"
     subprocess.run([sys.executable, os.path.join(os.path.dirname(__file__), "music.py"), f"{total:.3f}", wav], check=True)
     ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
-                           "-r", str(FPS), "-i", "-", "-i", wav, "-c:v", "libx264", "-preset", "medium", "-crf", "19",
+                           "-r", str(FPS), "-i", "-", "-i", wav, "-c:v", "libx264", "-preset", "slow", "-crf", "16",
                            "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", OUT],
                           stdin=subprocess.PIPE)
     for n in range(nframes):
