@@ -243,7 +243,7 @@ class Photo:
         self.dur, self.captions, self.zoom, self.pan = dur, captions, zoom, pan
         self.bg = blurred_bg(im)
         self.cw, self.ch = card_size(*im.size)
-        self.src = enhance(im.resize((int(self.cw * 1.15), int(self.ch * 1.15)), Image.LANCZOS))
+        self.src = im.resize((int(self.cw * 1.15), int(self.ch * 1.15)), Image.LANCZOS)  # photos are pre-retouched by fixphotos.py
         self.cy = CARD_CY
 
     def frame(self, t):
