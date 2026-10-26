@@ -1,0 +1,14 @@
+{
+  "common": "Natural smartphone video filmed at a real outdoor coffee cart. Warm summer daylight. Slow handheld camera with very slight natural shake. Keep every object, logo, sign, Hebrew text, food, drink, tree and piece of furniture exactly as in the image. Do not add or remove anything. Candid, casual, believable. No cinematic look, no dramatic camera moves, no surreal details.",
+  "negative": "new objects, extra glasses, extra people, changed logo, distorted Hebrew text, morphing, warping, melting, deformed hands, extra fingers, plastic skin, cinematic lighting, dramatic camera move, zoom blur, surreal",
+  "shots": [
+    {"frame": "1-ballot", "prompt": "Close-up: a hand slowly slides the white voting card with the logo into the slot of the ballot box. Slow subtle push-in. Leaves move gently in the breeze in the background. The logo on the card stays sharp and unchanged."},
+    {"frame": "2-espresso", "prompt": "Close-up of espresso pouring from the machine into the paper cup in a thin natural stream, a little steam rising from the cup. Camera almost still with very slight handheld movement. The logo on the cup stays unchanged."},
+    {"frame": "3-food", "prompt": "Close-up of the bowls, toast and iced coffee on the wooden table. Camera moves slowly and slightly sideways across the table. Gentle dappled sunlight flickers through the leaves. Ice shifts slightly in the glass. The food does not change."},
+    {"frame": "3b-drizzle", "prompt": "Close-up: the sauce bottle slowly drizzles a thin stream of sauce over the granola bowl. Natural hand movement. Slow, gentle camera push-in. The bowl and toppings stay the same."},
+    {"frame": "4-friends", "prompt": "Three female friends in summer clothes sit at the wooden table chatting naturally. Small smiles, light conversation, one sips her coffee. Subtle natural movement only, no exaggerated gestures. Slight handheld camera. People in the background move a little."},
+    {"frame": "5-cart", "prompt": "Wide shot of the coffee cart exactly as shown. Very slow handheld camera movement. Tree leaves move gently in the breeze, sunlight flickers softly. A barista moves a little inside the cart. The logo sign and menu stay unchanged."},
+    {"frame": "6-seating", "prompt": "Wide shot of the outdoor seating area under the trees with picnic tables. Leaves sway gently, light flickers through the branches, people at the tables chat and move slightly. Very slow small sideways camera movement."},
+    {"frame": "7-toast", "prompt": "Two hands, each holding one drink: an iced coffee and an iced tea. The two glasses gently clink together in a natural toast and pull back slightly. Ice moves inside the glasses. Exactly two glasses, never a third. Slight handheld camera."}
+  ]
+}
