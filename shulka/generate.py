@@ -15,7 +15,7 @@ OUT = ROOT.parent / "shulka-reel-live.mp4"
 
 # (start, seconds) of each 5s clip to use, and 9:16 crop pan (start, end) as 0..1 of spare width
 EDIT = {
-    "1-ballot": (0, 3.0, 0.15, 0.10), "2-espresso": (0, 3.0, 0.5, 0.5),
+    "1-ballot": (0.2, 4.0, 0.1, 0.3), "2-espresso": (0.5, 3.5, 0.55, 0.5),
     "3-food": (0.3, 4.7, 0.05, 0.2), "3b-drizzle": (0, 2.5, 0.5, 0.45),
     "4-friends": (0.5, 4.0, 0.0, 1.0), "5-cart": (0.5, 3.5, 0.3, 0.45),
     "6-seating": (0.5, 3.5, 1.0, 0.6), "7-toast": (0, 5.0, 0.7, 0.7),
